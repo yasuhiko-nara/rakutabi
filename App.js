@@ -2,22 +2,26 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Map from './components/Map';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default function App() {
   return (
     <>
-      <Map />
-      <View
-        style={{
-          flexDirection: 'row',
-          height: 100,
-          padding: 20,
-        }}
-      >
-        <View style={{ backgroundColor: 'blue', flex: 0.3 }} />
-        <View style={{ backgroundColor: 'red', flex: 0.5 }} />
-        <Text>Hello World!</Text>
-      </View>
+      <Provider store={store}>
+        <Map />
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 100,
+            padding: 20,
+          }}
+        >
+          <View style={{ backgroundColor: 'blue', flex: 0.3 }} />
+          <View style={{ backgroundColor: 'red', flex: 0.5 }} />
+          <Text>Hello World!</Text>
+        </View>
+      </Provider>
     </>
   );
 }
