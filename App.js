@@ -5,14 +5,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen!!!</Text>
-    </View>
-  );
-}
+import HomeScreen from './screens/HomeScreen';
+import Page from './screens/Page';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +15,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Page" component={Page} />
       </Stack.Navigator>
     </NavigationContainer>
   );

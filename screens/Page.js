@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
-export default function HomeScreen({ navigation }) {
+export default function Page({ navigation }) {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Page')}
+      onPress={() => navigation.navigate('Home')}
       style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
     >
-      <Text>Home Screen</Text>
+      <Text>Page</Text>
     </TouchableOpacity>
   );
 }
