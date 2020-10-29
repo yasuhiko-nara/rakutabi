@@ -6,7 +6,7 @@ export default function HomeScreen({ navigation }) {
       onPress={() => navigation.navigate('Page')}
       style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
     >
-      <Text>Home Screen</Text>
+      <Text>Welcome!! Tap to show Map!</Text>
     </TouchableOpacity>
   );
 }
