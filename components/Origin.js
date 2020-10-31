@@ -16,12 +16,19 @@ export default function () {
     dispatch(setStart(e.nativeEvent.coordinate));
   };
   const errorMsg = useRef(null);
-  const count = useRef(0);
+  // const count = useRef(0);
 
   const LOCATION_SETTINGS = {
     accuracy: Location.Accuracy.Balanced,
     timeInterval: 1000,
     distanceInterval: 0,
+  };
+
+  const LOCATION_CB = (myLocation) => {
+    dispatch(setMyLocation(myLocation));
+    // count.current = myLocation.timestamp - count.current;
+    // console.log(count.current, myLocation);
+    // うまくwatchLocationが1秒おきに動いていないが仕方ない
   };
 
   useEffect(() => {
@@ -30,26 +37,29 @@ export default function () {
       if (status !== 'granted') {
         errorMsg.current = 'Permission to access location was denied';
       }
+      let firstLocation = await Location.getCurrentPositionAsync({});
+      dispatch(
+        setStart({
+          latitude: firstLocation.coords.latitude,
+          longitude: firstLocation.coords.longitude,
+        })
+      );
+      // 初回に自己位置を特定して、それを出発地と仮置く
 
-      await Location.watchPositionAsync(LOCATION_SETTINGS, (myLocation) => {
-        dispatch(setMyLocation(myLocation));
-        count.current = myLocation.timestamp - count.current;
-        console.log(count.current, myLocation);
-        // うまくwatchLocationが1秒おきに動いていない
-      });
+      await Location.watchPositionAsync(LOCATION_SETTINGS, LOCATION_CB);
     })();
   }, []);
 
   let text = 'Waiting..';
   if (errorMsg) {
     text = errorMsg;
-  } else if (myLocation) {
+  } else if (myLocation.coords.latitude) {
     text = JSON.stringify(myLocation);
   }
 
   return (
     <>
-      {myLocation.coords.latitude && (
+      {myLocation.coords.latitude && startPoint.latitude && (
         <MapView
           apikey={GOOGLE_MAPS_API_KEY}
           provider={PROVIDER_GOOGLE}
@@ -70,8 +80,8 @@ export default function () {
           />
           <Marker
             coordinate={{
-              latitude: myLocation.coords.latitude,
-              longitude: myLocation.coords.longitude,
+              latitude: startPoint.latitude,
+              longitude: startPoint.longitude,
             }}
             title={`出発地`}
             description={'出発地をドラッグで選択'}

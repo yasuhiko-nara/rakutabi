@@ -1,9 +1,6 @@
 const initialState = {
-  startPoint: {
-    latitude: 35.68,
-    longitude: 139.76,
-  },
-  goalPoint: '',
+  startPoint: { latitude: null, longitude: null },
+  goalPoint: { latitude: null, longitude: null },
   myLocation: { coords: { latitude: null, longitude: null } },
 };
 
