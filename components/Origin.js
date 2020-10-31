@@ -16,7 +16,6 @@ export default function () {
     dispatch(setStart(e.nativeEvent.coordinate));
   };
   const errorMsg = useRef(null);
-  // const count = useRef(0);
 
   const LOCATION_SETTINGS = {
     accuracy: Location.Accuracy.Balanced,
@@ -26,8 +25,6 @@ export default function () {
 
   const LOCATION_CB = (myLocation) => {
     dispatch(setMyLocation(myLocation));
-    // count.current = myLocation.timestamp - count.current;
-    // console.log(count.current, myLocation);
     // うまくwatchLocationが1秒おきに動いていないが仕方ない
   };
 
@@ -70,6 +67,7 @@ export default function () {
             latitudeDelta: 0.02, //小さくなるほどズーム
             longitudeDelta: 0.02,
           }}
+          showsCompass={true}
         >
           <Marker
             coordinate={{
