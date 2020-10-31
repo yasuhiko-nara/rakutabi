@@ -21,7 +21,11 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.ynara.app"
+      "package": [
+        "com.ynara.app",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
     }
   }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Map from '../components/Map';
+import Origin from '../components/Origin';
+import Destination from '../components/Destination';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
@@ -30,8 +31,8 @@ export default function Page({ navigation }) {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Map1" component={Map} />
-      <Tab.Screen name="Map2" component={Map} />
+      <Tab.Screen name="出発地" component={Origin} />
+      <Tab.Screen name="目的地" component={Destination} />
     </Tab.Navigator>
   );
 }

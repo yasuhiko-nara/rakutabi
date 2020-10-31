@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import Map from '../components/Map';
-import { Provider } from 'react-redux';
-import store from '../store';
+// import Map from '../components/Origin';
+// import { Provider } from 'react-redux';
+// import store from '../store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';

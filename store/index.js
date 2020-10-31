@@ -2,8 +2,8 @@ import { createStore, combineReducers } from 'redux';
 import mapReducer from './reducers/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistReducer, persistStore } from 'redux-persist';
-// import { AsyncStorage } from '@react-native-community/async-storage';
-import storage from 'redux-persist/lib/storage';
+import AsyncStorage from '@react-native-community/async-storage';
+// import storage from 'redux-persist/lib/storage';
 
 const rootReducer = combineReducers({
   map: mapReducer,
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 
 const persisitConfig = {
   key: 'root',
-  storage,
+  storage: AsyncStorage,
   whiteList: ['map'],
 };
 
