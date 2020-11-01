@@ -1,10 +1,12 @@
-const initialState = {
+import { state, action } from '../../interface';
+
+const initialState: state = {
   startPoint: { latitude: null, longitude: null },
   goalPoint: { latitude: null, longitude: null },
   myLocation: { coords: { latitude: null, longitude: null } },
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state: state = initialState, action: action): state => {
   switch (action.type) {
     case 'SET_START':
       return { ...state, startPoint: action.coordinate };
